@@ -82,7 +82,7 @@ function App() {
     <>
       <Navbar />
       <div className="container mx-auto my-5 rounded-xl p-5 hover:bg-[#c3b5fd54 ] min-h-[80vh] w-[90vw] md:w-[60vw]">
-        <h1 className='font-bold text-xl text-center'>Taskiy - Manager your todos at one place</h1>
+        <h1 className='font-bold text-xl text-center'>Taskify - Manager your todos at one place</h1>
         <div className="addTodo my-5 flex flex-col ">
 
           <h2 className='text-lg font-bold my-2'>Add a Todo</h2>
