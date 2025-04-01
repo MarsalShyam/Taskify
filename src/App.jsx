@@ -31,56 +31,59 @@ function App() {
   }
 
   const handleEdit = (e, id) => {
-    let t = todos.filter(i => i.id === id);
-    setTodo(t[0].todo)
-    let newTodos = todos.filter(item => {
-      return item.id !== id;
-    });
+    let t = todos.find(i => i.id === id);
+    setTodo(t.todo);
+    
+    let newTodos = todos.filter(item => item.id !== id);
     setTodos(newTodos);
-    saveToLS();
-  }
+    saveToLS(newTodos); 
+  };
+  
   const handleDelete = (e, id) => {
-    // alert(`It is a delete id ${id}`);
-    // let index=todos.findIndex(item=>{
-    //   return item.id===id;
-    // })
-    // console.log(index);
-
-    let newTodos = todos.filter(item => {
-      return item.id !== id;
-    });
+    let newTodos = todos.filter(item => item.id !== id);
     setTodos(newTodos);
-    saveToLS();
-  }
+    saveToLS(newTodos); 
+  };
+  
 
   const handleAdd = () => {
-    setTodos([...todos, { id: uuidv4(), todo, isCompleted: false }])
-    setTodo("")
-    console.log(todos)
-    saveToLS();
-  }
+    const newTodos = [...todos, { id: uuidv4(), todo, isCompleted: false }];
+    setTodos(newTodos);
+    setTodo("");
+    saveToLS(newTodos); 
+  };
+  
   const handleChange = (e) => {
     setTodo(e.target.value);
   }
 
   const handleCheckbox = (e) => {
-    console.log(e, e.target)
-    let id = e.target.name
-    console.log(`The id is ${id}`)
-    let index = todos.findIndex(item => {
-      return item.id === id;
-    })
-    console.log(index);
+    let id = e.target.name;
+    let index = todos.findIndex(item => item.id === id);
+    
     let newTodos = [...todos];
     newTodos[index].isCompleted = !newTodos[index].isCompleted;
-    setTodos(newTodos)
-    //  console.log(newTodos,todos);
-    saveToLS();
-  }
-
+    
+    setTodos(newTodos);
+    saveToLS(newTodos); 
+  };
+  
   return (
     <>
       <Navbar />
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+      >
+        <source
+          src="https://www.videvo.net/videvo_files/converted/2021_05/preview/210503_04_NYC_BRoll_4k_012.mp410296.webm"
+          type="video/webm"
+        />
+        Your browser does not support the video tag.
+      </video>
       <div className="container mx-auto my-5 rounded-xl p-5 hover:bg-[#c3b5fd54 ] min-h-[80vh] w-[90vw] md:w-[60vw]">
         <h1 className='font-bold text-xl text-center'>Taskify - Manager your todos at one place</h1>
         <div className="addTodo my-5 flex flex-col ">
